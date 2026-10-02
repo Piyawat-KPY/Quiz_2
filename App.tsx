@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function App() {
-  // สร้าง State สำหรับเก็บข้อความที่พิมพ์ และข้อความที่จะแสดงตอนกดปุ่ม
   const [name, setName] = useState('');
   const [hello_name, SetHello_name] = useState('');
 

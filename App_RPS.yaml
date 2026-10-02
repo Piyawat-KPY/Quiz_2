@@ -1,0 +1,11 @@
+appId: com.anonymous.Quiz_2
+---
+- launchApp
+- assertVisible: "Rock,paper,scissor"
+- tapOn:
+    id: "P1_btn_Rock"
+- tapOn:
+    id: "P2_btn_Scissor"
+- tapOn:
+    id: "Process_btn"
+- assertVisible: "player 1 Win!"

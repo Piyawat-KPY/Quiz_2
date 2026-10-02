@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function App() {
-    const [name, setName] = useState('');
-    const [hello_name, SetHello_name] = useState('');
     const [winner , SetWinner] = useState('-');
     const [player_1, SetPlayer_1] = useState('');
     const [player_2 , SetPlayer_2] = useState('');
@@ -15,11 +13,11 @@ export default function App() {
     if (player1 === player2) {
         Who_win = 'No body win!!!'
     }
-    else if(player1 === 'Rock' && player2 === 'sissor'){
+    else if(player1 === 'Rock' && player2 === 'scissor'){
         Who_win = 'player 1 Win!'
     }else if(player1 === 'paper' && player2 === 'Rock'){
         Who_win = 'player 1 Win!'
-    }else if(player1 === 'sissor' && player2 === 'paper'){
+    }else if(player1 === 'scissor' && player2 === 'paper'){
         Who_win = 'player 1 Win!'
     }else {
         Who_win = 'player 2 Win!'
@@ -34,19 +32,19 @@ export default function App() {
       <Text style={styles.titleText}>Rock,paper,scissor</Text>
 
        <View style={styles.Winner_Output}>
-        <Text style={styles.player_Text}>{winner}</Text>
+        <Text testID = 'Winner_Text' style={styles.player_Text}>{winner}</Text>
        </View>
 
       <Text style={styles.player_Text}>Player_1</Text>
       <View style={styles.inputRow}>
         
-        <TouchableOpacity style={styles.helloButton} onPress={() => SetPlayer_1(`Rock'`)}>
+        <TouchableOpacity testID = 'P1_btn_Rock' style={styles.helloButton} onPress={() => SetPlayer_1(`Rock`)}>
           <Text style={styles.buttonText}>Rock</Text>
         </TouchableOpacity>
-            <TouchableOpacity style={styles.helloButton} onPress={() => SetPlayer_1(`paper`)}>
+        <TouchableOpacity testID = 'P1_btn_Paper'style={styles.helloButton} onPress={() => SetPlayer_1(`paper`)}>
           <Text style={styles.buttonText}>Paper</Text>
         </TouchableOpacity>
-            <TouchableOpacity style={styles.helloButton} onPress={() => SetPlayer_1(`sissor`)}>
+        <TouchableOpacity testID = 'P1_btn_Scissor' style={styles.helloButton} onPress={() => SetPlayer_1(`scissor`)}>
           <Text style={styles.buttonText}>Scissor</Text>
         </TouchableOpacity>
       </View>
@@ -54,19 +52,26 @@ export default function App() {
     <Text style={styles.player_Text}>Player_2</Text>
       <View style={styles.inputRow}>
         
-        <TouchableOpacity style={styles.helloButton} onPress={() => SetPlayer_2(`Rock'`)}>
+        <TouchableOpacity testID = 'P2_btn_Rock' style={styles.helloButton} onPress={() => SetPlayer_2(`Rock`)}>
           <Text style={styles.buttonText}>Rock</Text>
         </TouchableOpacity>
-            <TouchableOpacity style={styles.helloButton} onPress={() => SetPlayer_2(`paper`)}>
+        <TouchableOpacity testID = 'P2_btn_Paper' style={styles.helloButton} onPress={() => SetPlayer_2(`paper`)}>
           <Text style={styles.buttonText}>Paper</Text>
         </TouchableOpacity>
-            <TouchableOpacity style={styles.helloButton} onPress={() => SetPlayer_2(`sissor`)}>
+        <TouchableOpacity testID = 'P2_btn_Scissor' style={styles.helloButton} onPress={() => SetPlayer_2(`scissor`)}>
           <Text style={styles.buttonText}>Scissor</Text>
         </TouchableOpacity>
       </View>
 
-
-      <Text style={styles.resultText}>{hello_name}</Text>
+      <View style={styles.inputRow}>
+        
+        <TouchableOpacity testID = 'Process_btn' style={styles.Process_Button} onPress={() => SetWinner(Who_win(player_1,player_2))}>
+          <Text style={styles.buttonText}>Process</Text>
+        </TouchableOpacity>
+            <TouchableOpacity testID = 'Restart_btn' style={styles.Restart_Button} onPress={() => SetWinner(`-`)}>
+          <Text style={styles.buttonText}>restart</Text>
+        </TouchableOpacity>
+      </View>
 
       <StatusBar style="auto" />
     </View>
@@ -116,6 +121,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#007BFF',
     paddingHorizontal: 40,
     paddingVertical: 32,
+    borderRadius: 8,
+    marginLeft: 10
+  },
+    Process_Button: {
+    backgroundColor: '#0fe113',
+    paddingHorizontal: 25,
+    paddingVertical: 18,
+    borderRadius: 8,
+    marginLeft: 10
+  },
+    Restart_Button: {
+    backgroundColor: '#ff3300',
+    paddingHorizontal: 25,
+    paddingVertical: 18,
     borderRadius: 8,
     marginLeft: 10
   },
