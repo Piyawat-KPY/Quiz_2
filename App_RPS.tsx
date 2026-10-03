@@ -4,8 +4,8 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 
 export default function App() {
     const [winner , SetWinner] = useState('-');
-    const [player_1, SetPlayer_1] = useState('');
-    const [player_2 , SetPlayer_2] = useState('');
+    const [player_1, SetPlayer_1] = useState('-');
+    const [player_2 , SetPlayer_2] = useState('-');
     
   const Who_win = (player1:string,player2:string) => {
 
@@ -28,16 +28,19 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-
+   
       <Text style={styles.titleText}>Rock,paper,scissor</Text>
 
-       <View style={styles.Winner_Output}>
+      <View style={styles.Winner_Output}>
         <Text testID = 'Winner_Text' style={styles.player_Text}>{winner}</Text>
-       </View>
+      </View>
 
-      <Text style={styles.player_Text}>Player_1</Text>
       <View style={styles.inputRow}>
-        
+        <Text style={styles.player_Text}>Player_1 :</Text>
+        <Text testID = 'Player_1_RPS' style={styles.player_Text}>{player_1}</Text>
+      </View>
+
+      <View style={styles.inputRow}>
         <TouchableOpacity testID = 'P1_btn_Rock' style={styles.helloButton} onPress={() => SetPlayer_1(`Rock`)}>
           <Text style={styles.buttonText}>Rock</Text>
         </TouchableOpacity>
@@ -49,7 +52,11 @@ export default function App() {
         </TouchableOpacity>
       </View>
 
-    <Text style={styles.player_Text}>Player_2</Text>
+    <View style={styles.inputRow}>
+      <Text style={styles.player_Text}>Player_2 :</Text>
+      <Text testID = 'Player_2_RPS' style={styles.player_Text}>{player_2}</Text>
+    </View>
+    
       <View style={styles.inputRow}>
         
         <TouchableOpacity testID = 'P2_btn_Rock' style={styles.helloButton} onPress={() => SetPlayer_2(`Rock`)}>
@@ -68,7 +75,11 @@ export default function App() {
         <TouchableOpacity testID = 'Process_btn' style={styles.Process_Button} onPress={() => SetWinner(Who_win(player_1,player_2))}>
           <Text style={styles.buttonText}>Process</Text>
         </TouchableOpacity>
-            <TouchableOpacity testID = 'Restart_btn' style={styles.Restart_Button} onPress={() => SetWinner(`-`)}>
+            <TouchableOpacity testID = 'Restart_btn' style={styles.Restart_Button} onPress={() => {
+              SetWinner(`-`);
+              SetPlayer_1(`-`);
+              SetPlayer_2(`-`);
+            }}>
           <Text style={styles.buttonText}>restart</Text>
         </TouchableOpacity>
       </View>

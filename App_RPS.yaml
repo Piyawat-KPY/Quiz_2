@@ -2,10 +2,60 @@ appId: com.anonymous.Quiz_2
 ---
 - launchApp
 - assertVisible: "Rock,paper,scissor"
+- assertVisible: "Player_1 :"
+- assertVisible: "Player_2 :"
+
 - tapOn:
     id: "P1_btn_Rock"
+- assertVisible:
+    id: "Player_1_RPS"
+    text: "Rock"
 - tapOn:
     id: "P2_btn_Scissor"
+- assertVisible:
+    id: "Player_2_RPS"
+    text: "Scissor"
 - tapOn:
     id: "Process_btn"
 - assertVisible: "player 1 Win!"
+
+- tapOn:
+    id: "P1_btn_Scissor"
+- assertVisible:
+    id: "Player_1_RPS"
+    text: "Scissor"
+- tapOn:
+    id: "P2_btn_Rock"
+- assertVisible:
+    id: "Player_2_RPS"
+    text: "Rock"
+- tapOn:
+    id: "Process_btn"
+- assertVisible: "player 2 Win!"
+
+- tapOn:
+    id: "P1_btn_Paper"
+- assertVisible:
+    id: "Player_1_RPS"
+    text: "Paper"
+- tapOn:
+    id: "P2_btn_Paper"
+- assertVisible:
+    id: "Player_2_RPS"
+    text: "Paper"
+- tapOn:
+    id: "Process_btn"
+- assertVisible: "No body win!!!"
+
+- tapOn:
+    id: "Restart_btn"
+- assertVisible: "-"
+- assertVisible:
+    id: "Player_1_RPS"
+    text: "-"
+- assertVisible:
+    id: "Player_2_RPS"
+    text: "-"
+
+
+
